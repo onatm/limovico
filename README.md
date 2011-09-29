@@ -35,6 +35,7 @@ Here a simple example of the usage of Limovico.
 
 * Controller example:
 
+```php
 	<?php
 		class Home extends Moco {
 			function show()
@@ -46,10 +47,12 @@ Here a simple example of the usage of Limovico.
 				$this->wrapper->view('home','home_view',$data);
 			}
 		}
+```
 
-		
+
 * Model example:
 
+```php
 	<?php
 		class home_model extends Moco {
 			var $db;
@@ -69,9 +72,12 @@ Here a simple example of the usage of Limovico.
 				return $data;
 			}
 		}
+```
+
 
 * View example:
 
+```html
 	<!DOCTYPE html>
 		<html lang="en">
 			<head>
@@ -85,6 +91,7 @@ Here a simple example of the usage of Limovico.
 			<?php endforeach; ?>
 		</body>
 	</html>
+```
 
 
 TODO
