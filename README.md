@@ -1,6 +1,6 @@
 # Limovico
 
-* Author:    Onat Yiðit Mercan - <onatmercan.gmail.com>
+* Author:    Onat Yigit Mercan - (<onatmercan.gmail.com>)
 * Date:      September, 2011
 * Version:   1.0.0
 * GitHub:    <https://github.com/onatm/limovico>
