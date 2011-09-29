@@ -36,61 +36,61 @@ Here a simple example of the usage of Limovico.
 * Controller example:
 
 ```php
-	<?php
-		class Home extends Moco {
-			function show()
-			{
-				$data['welcome'] = 'Welcome to Limovico';
-				$this->wrapper->model('home','home_model');
-				$this->wrapper->home_model->connect_db();
-				$data['dbs'] = $this->wrapper->home_model->get_dbs();
-				$this->wrapper->view('home','home_view',$data);
-			}
+<?php
+	class Home extends Moco {
+		function show()
+		{
+			$data['welcome'] = 'Welcome to Limovico';
+			$this->wrapper->model('home','home_model');
+			$this->wrapper->home_model->connect_db();
+			$data['dbs'] = $this->wrapper->home_model->get_dbs();
+			$this->wrapper->view('home','home_view',$data);
 		}
+	}
 ```
 
 
 * Model example:
 
 ```php
-	<?php
-		class home_model extends Moco {
-			var $db;
-			function __construct($wrapper)
-			{
-				parent::__construct($wrapper);
-				$this->wrapper->library('Database');
-			}
-			function connect_db()
-			{
-				$this->db = $this->wrapper->database->connect();
-			}
-			function get_dbs()
-			{
-				$this->db->query('Show databases');
-				$data = $this->db->result();
-				return $data;
-			}
+<?php
+	class home_model extends Moco {
+		var $db;
+		function __construct($wrapper)
+		{
+			parent::__construct($wrapper);
+			$this->wrapper->library('Database');
 		}
+		function connect_db()
+		{
+			$this->db = $this->wrapper->database->connect();
+		}
+		function get_dbs()
+		{
+			$this->db->query('Show databases');
+			$data = $this->db->result();
+			return $data;
+		}
+	}
 ```
 
 
 * View example:
 
-```html
-	<!DOCTYPE html>
-		<html lang="en">
-			<head>
-			<meta charset="utf-8" />
-			<title></title>
-		</head>
-		<body>
-			<p><?php echo $welcome; ?></p>
-			<?php foreach ($dbs as $db): ?>
-			<p><?php echo $db->Database; ?></p>
-			<?php endforeach; ?>
-		</body>
-	</html>
+```php
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<p><?php echo $welcome; ?></p>
+		<?php foreach ($dbs as $db): ?>
+		<p><?php echo $db->Database; ?></p>
+		<?php endforeach; ?>
+	</body>
+</html>
 ```
 
 
