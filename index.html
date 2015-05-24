@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Limovico by onatm</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Limovico</h1>
+        <p>Lightweight HMVC framework for PHP</p>
+
+        <p class="view"><a href="https://github.com/onatm/limovico">View the Project on GitHub <small>onatm/limovico</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/onatm/limovico/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/onatm/limovico/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/onatm/limovico">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="limovico" class="anchor" href="#limovico" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limovico</h1>
+
+<ul>
+<li>Author:    Onat Yigit Mercan - onatmercan [at] gmail [dot] com</li>
+<li>Date:      September, 2011</li>
+<li>Version:   1.0.0</li>
+<li>GitHub:    <a href="https://github.com/onatm/limovico">https://github.com/onatm/limovico</a>
+</li>
+</ul>
+
+<h1>
+<a id="what-is-limovico" class="anchor" href="#what-is-limovico" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is Limovico</h1>
+
+<p>Limovico is a lightweight hierarchical-model-view-controller framework to build websites using PHP. It comes with several core and library classes to handle main functions of a web site.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Modular model-view-controller structure.</li>
+<li>Contollers can call models and views of other modules.</li>
+<li>Lightweight baby!</li>
+</ul>
+
+<h2>
+<a id="server-requirements" class="anchor" href="#server-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Server Requirements</h2>
+
+<ul>
+<li>PHP version 5.1.0 or newer.</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Place Limovico to any directory in your webserver.</p>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<ul>
+<li>There is no configuration needed to run Limovico.</li>
+<li>To use a database, edit <code>/application/configurations/database.php</code>.</li>
+<li>To change default controller and method, edit <code>/application/configurations/routes.php</code>.</li>
+</ul>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>Here a simple example of the usage of Limovico.</p>
+
+<ul>
+<li>Controller example:</li>
+</ul>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">class</span> <span class="pl-en">Home</span> <span class="pl-k">extends</span> <span class="pl-e">Moco</span> {</span>
+<span class="pl-s1">        <span class="pl-k">function</span> <span class="pl-en">show</span>()</span>
+<span class="pl-s1">        {</span>
+<span class="pl-s1">            <span class="pl-smi">$data</span>[<span class="pl-s"><span class="pl-pds">'</span>welcome<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Welcome to Limovico<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">            <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">wrapper</span><span class="pl-k">-&gt;</span>model(<span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>home_model<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">            <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">wrapper</span><span class="pl-k">-&gt;</span><span class="pl-smi">home_model</span><span class="pl-k">-&gt;</span>connect_db();</span>
+<span class="pl-s1">            <span class="pl-smi">$data</span>[<span class="pl-s"><span class="pl-pds">'</span>dbs<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">wrapper</span><span class="pl-k">-&gt;</span><span class="pl-smi">home_model</span><span class="pl-k">-&gt;</span>get_dbs();</span>
+<span class="pl-s1">            <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">wrapper</span><span class="pl-k">-&gt;</span>view(<span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>home_view<span class="pl-pds">'</span></span>,<span class="pl-smi">$data</span>);</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">    }</span></pre></div>
+
+<ul>
+<li>Model example:</li>
+</ul>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">class</span> <span class="pl-en">home_model</span> <span class="pl-k">extends</span> <span class="pl-e">Moco</span> {</span>
+<span class="pl-s1">        <span class="pl-k">var</span> <span class="pl-smi">$db</span>;</span>
+<span class="pl-s1">        <span class="pl-k">function</span> <span class="pl-c1">__construct</span>(<span class="pl-smi">$wrapper</span>)</span>
+<span class="pl-s1">        {</span>
+<span class="pl-s1">            <span class="pl-k">parent</span><span class="pl-k">::</span>__construct(<span class="pl-smi">$wrapper</span>);</span>
+<span class="pl-s1">            <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">wrapper</span><span class="pl-k">-&gt;</span>library(<span class="pl-s"><span class="pl-pds">'</span>Database<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">        <span class="pl-k">function</span> <span class="pl-en">connect_db</span>()</span>
+<span class="pl-s1">        {</span>
+<span class="pl-s1">            <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">db</span> <span class="pl-k">=</span> <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">wrapper</span><span class="pl-k">-&gt;</span><span class="pl-smi">database</span><span class="pl-k">-&gt;</span>connect();</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">        <span class="pl-k">function</span> <span class="pl-en">get_dbs</span>()</span>
+<span class="pl-s1">        {</span>
+<span class="pl-s1">            <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">db</span><span class="pl-k">-&gt;</span>query(<span class="pl-s"><span class="pl-pds">'</span>Show databases<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">            <span class="pl-smi">$data</span> <span class="pl-k">=</span> <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">db</span><span class="pl-k">-&gt;</span>result();</span>
+<span class="pl-s1">            <span class="pl-k">return</span> <span class="pl-smi">$data</span>;</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">    }</span></pre></div>
+
+<ul>
+<li>View example:</li>
+</ul>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">&lt;</span><span class="pl-k">!</span><span class="pl-c1">DOCTYPE</span> <span class="pl-c1">html</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">    <span class="pl-k">&lt;</span><span class="pl-c1">html</span> <span class="pl-c1">lang</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>en<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">        <span class="pl-k">&lt;</span><span class="pl-c1">head</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">        <span class="pl-k">&lt;</span><span class="pl-c1">meta</span> <span class="pl-c1">charset</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">        <span class="pl-k">&lt;</span><span class="pl-c1">title</span><span class="pl-k">&gt;&lt;</span><span class="pl-k">/</span><span class="pl-c1">title</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">    <span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-c1">head</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">    <span class="pl-k">&lt;</span><span class="pl-c1">body</span><span class="pl-k">&gt;</span></span>
+<span class="pl-s1">        <span class="pl-k">&lt;</span><span class="pl-c1">p</span><span class="pl-k">&gt;&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">echo</span> <span class="pl-smi">$welcome</span>; </span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>&lt;/<span class="pl-ent">p</span>&gt;
+        <span class="pl-pse">&lt;?php</span><span class="pl-s1"> <span class="pl-k">foreach</span> (<span class="pl-smi">$dbs</span> <span class="pl-k">as</span> <span class="pl-smi">$db</span>): </span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+        &lt;<span class="pl-ent">p</span>&gt;<span class="pl-pse">&lt;?php</span><span class="pl-s1"> <span class="pl-c1">echo</span> <span class="pl-smi">$db</span><span class="pl-k">-&gt;</span><span class="pl-smi">Database</span>; </span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>&lt;/<span class="pl-ent">p</span>&gt;
+        <span class="pl-pse">&lt;?php</span><span class="pl-s1"> <span class="pl-k">endforeach</span>; </span><span class="pl-pse"><span class="pl-s1">?</span>&gt;</span>
+    &lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ol>
+<li>Cache library should be added.</li>
+</ol>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/onatm">onatm</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-49218920-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
